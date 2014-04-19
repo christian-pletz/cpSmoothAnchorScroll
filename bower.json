@@ -1,0 +1,29 @@
+{
+  "name": "cpSmoothAnchorScroll",
+  "main": "dist/cpSmoothAnchorScroll.js",
+  "homepage": "https://github.com/christian-pletz/cpSmoothAnchorScroll",
+  "authors": [
+    "info@christian-pletz.de"
+  ],
+  "description": "jQuery Plugin for smooth anchor scrolling.",
+  "dependencies": {
+    "jquery": ">=1.11.0"
+  },
+  "keywords": [
+    "jQuery",
+    "anchor",
+    "scrolling"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "dev",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json"
+  ]
+}
