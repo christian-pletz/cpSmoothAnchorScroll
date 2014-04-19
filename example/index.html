@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>cpSmoothAnchorScroll example</title>
+        <link rel="stylesheet" href="css/example.css">
+    </head>
+    <body>
+	<div class="nav">
+		<a href="#firstTarget" class="smoothScroll">Click to scroll to first target</a>
+		<a href="#secondTarget" class="smoothScroll">Click to scroll to second target</a>
+	</div>
+
+	<div id="firstTarget"></div>
+	<div id="secondTarget"></div>
+
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="../cpSmoothAnchorScroll.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('a.smoothScroll').cpSmoothAnchorScroll();
+		});
+	</script>
+
+    </body>
+</html>
+
