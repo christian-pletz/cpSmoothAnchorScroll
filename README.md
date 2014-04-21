@@ -4,6 +4,7 @@ cpSmoothAnchorScroll
 jQuery Plugin for smooth anchor scrolling.
 
 
+
 Basic usage
 -----
 
