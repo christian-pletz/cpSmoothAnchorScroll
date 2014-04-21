@@ -1,7 +1,6 @@
 /*global jQuery, history, document, window, location */
 /**
  * cpSmoothAnchorScroll.js
- * Version 0.1
  * Copyright 2014 Christian Pletz
  * https://github.com/christian-pletz/cpSmoothAnchorScroll/blob/master/LICENSE
  */
@@ -18,16 +17,17 @@
             },
             scroll = function (href, targetElem, clickedElem) {
                 if (href.match(/#/) !== null && targetElem.length > 0) {
+                    handlePushState(href);
                     $('html,body').stop().animate({
                         scrollTop: $(href).offset().top + opts.offset
                     }, opts.duration, opts.easing, function () {
-                        handlePushState(href);
                         $(document).trigger('scrollingFinished', {
                             clickedEl: clickedElem
                         });
                     });
                 }
             };
+
         return this.each(function () {
             var elem = $(this);
             elem.on('click', function (e) {
