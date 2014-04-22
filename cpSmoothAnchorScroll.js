@@ -8,6 +8,7 @@
     "use strict";
     $.fn.cpSmoothAnchorScroll = function (options) {
         var opts = $.extend({}, $.fn.cpSmoothAnchorScroll.defaults, options),
+            elements = this,
             handlePushState = function (href) {
                 if (history.pushState) {
                     history.pushState(null, null, href);
@@ -21,20 +22,34 @@
                     $('html,body').stop().animate({
                         scrollTop: $(href).offset().top + opts.offset
                     }, opts.duration, opts.easing, function () {
-                        $(document).trigger('scrollingFinished', {
-                            clickedEl: clickedElem
-                        });
+                        if (clickedElem) {
+                            $(document).trigger('scrollingFinished', {
+                                clickedEl: clickedElem
+                            });
+                        }
                     });
                 }
             };
 
-        return this.each(function () {
-            var elem = $(this);
-            elem.on('click', function (e) {
-                e.preventDefault();
-                var href = $(e.target).attr('href'),
-                    targetElem = $(href);
-                scroll(href, targetElem, elem);
+
+        // Scrolling for initial page load
+        $(document).on('ready', function () {
+            // Scrolling
+            elements.each(function () {
+                var elem = $(this),
+                    href = elem.attr('href');
+                elem.attr('data-target', href);
+                elem.on('click', function (e) {
+                    e.preventDefault();
+                    var targetElem = $(href);
+                    scroll(href, targetElem, elem);
+                });
+            }).promise().done(function () {
+                var hash = window.location.hash;
+                if (window.location.hash !== '') {
+                    window.scrollTo(0, 0);
+                    $(document).find('a[data-target="' + hash + '"]').trigger('click');
+                }
             });
         });
     };
@@ -44,4 +59,5 @@
         duration: 400, // A string or number determining how long the animation will run.
         easing: 'swing' // A string indicating which easing function to use for the transition.
     };
+
 }(jQuery));
