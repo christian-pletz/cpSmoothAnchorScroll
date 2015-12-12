@@ -6,7 +6,6 @@
     "info@christian-pletz.de"
   ],
   "description": "jQuery Plugin for smooth anchor scrolling.",
-  "moduleType": [],
   "dependencies": {
     "jquery": ">=1.11.0"
   },
@@ -16,7 +15,6 @@
     "scrolling"
   ],
   "license": "MIT",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
